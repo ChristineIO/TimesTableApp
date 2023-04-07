@@ -1,0 +1,97 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+			rel="stylesheet"
+		/>
+		<title>TimeTableApp</title>
+	</head>
+	<body onload="Multiply(), StartCounting()">
+		<div class="container">
+			<h1 class="title">Times Table App</h1>
+			<h2 class="title">Improve and test your Times Table</h2>
+
+			<form class="container">
+				<div id="times-number-select" class="col-md-3">
+					<select
+						name="number-select"
+						id="number-select"
+						class="form-select form-select-lg mb-8"
+						aria-label=".form-select-lg example"
+						onchange="selectTimesNum(), Multiply()"
+					>
+						<option value="2" title="2 times table" selected> 2 x ...</option>
+						<option value="3" title="3 times table">3 x ...</option>
+						<option value="4" title="4 times table">4 x ...</option>
+						<option value="5" title="5 times table">5 x ...</option>
+						<option value="6" title="6 times table">6 x ...</option>
+						<option value="7" title="7 times table">7 x ...</option>
+						<option value="8" title="8 times table">8 x ...</option>
+						<option value="9" title="9 times table">9 x ...</option>
+						<option value="10" title="10 times table">10 x ...</option>
+						<option value="11" title="11 times table">11 x ...</option>
+						<option value="12" title="12 times table">12 x ...</option>
+						<option value="all" title="All times table 2 to 12"
+							>2 to 12 x ...(All)</option
+						>
+					</select>
+				</div>
+				<div class="form-floating col-md-3">
+					<input
+						type="text"
+						name="answer"
+						class="form-control"
+						id="answerBox"
+						placeholder="Answer Here"
+					/>
+					<i class="material-icons-outlined text-blue" id="checkIcon">check</i>
+					<i class="material-icons-outlined text-blue" id="closeIcon">close</i>
+
+					<i
+						class="material-icons-outlined text-blue"
+						id="submit"
+						onclick="CheckAnswer(), Multiply(), clearText()"
+						>keyboard_return</i
+					>
+				</div>
+			</form>
+			<div class="container">
+				<p id="firstNum" class="quest"></p>
+				<p id="xSign">x</p>
+				<p id="secNum" class="quest"></p>
+			</div>
+			<div class="position-relative">
+				<div class="timer col-md-2">
+					<select
+						name="Seconds"
+						id="second-timer"
+						class="form-select form-select-lg lg-8"
+						aria-label=".form-select-lg example"
+						onchange="Timer()"
+					>
+						<option value="none" selected>No Timer...</option>
+						<option value="5">5 seconds</option>
+						<option value="10">10 seconds</option>
+						<option value="15">15 seconds</option>
+					</select>
+					<div class="countdown">
+						<h1>00</h1>
+						<h1>:</h1>
+						<h1 id="seconds">00</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script src="./app.js"></script>
+	<!-- <script src="./index.js"></script> -->
+</html>
