@@ -68,17 +68,16 @@ function Correct() {
 function CheckAnswer() {
     userAnswer = document.getElementById("answerBox").value;
     console.log(userAnswer + " user answer..");
-    setInterval(() => {
-        if (userAnswer == undefined || "" || NaN && second == 0) {
-            Multiply();
-        }
-    }, 1000);
-    if (userAnswer != answer) {
-        Wrong();
-        console.log("Wrong");
+    if (userAnswer == undefined || "" || isNaN(userAnswer) || userAnswer == 0) {
+        Multiply();
     } else {
-        Correct();
-        console.log("Correct! Good Job!")
+        if (userAnswer != answer) {
+            Wrong();
+            console.log("Wrong");
+        } else {
+            Correct();
+            console.log("Correct! Good Job!")
+        }
     }
 }
 
@@ -119,20 +118,16 @@ function Countdown() {
             StartCounting();
             console.log("Supposed to start");
         }
-    } else if (timer.value !== "none" && userAnswer !== undefined || 0) {
+    }
+    if (timer.value !== "none" && userAnswer !== undefined || NaN) {
+        console.log("Yes timer.value is none and unswerAnswer has a number");
         StopCounting();
-        userAnswer = Number(userAnswer);
-        console.log(second, userAnswer);
-        if (userAnswer !== answer) {
-            Wrong();
+        setTimeout(() => {
             StartCounting();
-            console.log("This code is running");
-        }
-        else if (userAnswer === answer) {
-            second = timer.value;
-            userAnswer = 0;
-            StartCounting();
-        } 
+            second = Number(timer.value) + 1;
+            userAnswer = undefined;
+        }, 500);
+        console.log("Supposed to start" + userAnswer + " " + second);
     }
 }
 
